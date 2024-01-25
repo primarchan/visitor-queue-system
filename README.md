@@ -18,10 +18,6 @@
 ### Redis
 - `docker run -it --rm -p 6379:6379 --name redis-sample-container redis:6.2`
 
-### MySQL
-
-## REFERENCE
-
 ## TEST
 - Embedded Redis
 ```groovy
