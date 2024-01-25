@@ -11,8 +11,13 @@
 - Docker 24.0.7
 - IntelliJ IDEA 2023.3.2 (Ultimate Edition)
 
+## SEQUENCE DIAGRAM
+![Sequence Diagram Image File](/document/sequence%20diagram.png)
+
 ## INFRASTRUCTURE
 ### Redis
 - `docker run -it --rm -p 6379:6379 --name redis-sample-container redis:6.2`
 
 ### MySQL
+
+## REFERENCE
