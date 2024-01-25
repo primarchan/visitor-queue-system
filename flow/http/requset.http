@@ -1,2 +1,8 @@
 ### UserQueueController / registerUser
-POST http://localhost:9010/api/v1/queue?user_id=22
+POST http://localhost:9010/api/v1/queue?user_id=40
+
+### UserQueueController / allowUser
+POST http://localhost:9010/api/v1/queue/allow?count=1
+
+### UserQueueController / isAllowUser
+GET http://localhost:9010/api/v1/queue/allowed?user_id=38
