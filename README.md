@@ -21,3 +21,9 @@
 ### MySQL
 
 ## REFERENCE
+
+## TEST
+- Embedded Redis
+```groovy
+testImplementation 'com.github.codemonstur:embedded-redis:1.0.0'
+```

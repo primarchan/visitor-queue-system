@@ -56,4 +56,13 @@ public class UserQueueService {
                 .map(rank -> rank > 0);
     }
 
+    /**
+     * @apiNote 대기 순번 조회 API
+     */
+    public Mono<Long> getRank(final String queue, final Long userId) {
+        return reactiveRedisTemplate.opsForZSet().rank(USER_QUEUE_WAIT_KEY.formatted(queue), userId.toString())
+                .defaultIfEmpty(-1L)
+                .map(rank -> rank >= 0 ? rank + 1 : rank);
+    }
+
 }

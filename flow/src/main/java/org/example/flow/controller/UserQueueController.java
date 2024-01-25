@@ -3,6 +3,7 @@ package org.example.flow.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.flow.dto.AllowUserResponse;
 import org.example.flow.dto.AllowedUserResponse;
+import org.example.flow.dto.RankNumberResponse;
 import org.example.flow.dto.RegisterUserResponse;
 import org.example.flow.service.UserQueueService;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,10 @@ public class UserQueueController {
     private final UserQueueService userQueueService;
 
     @PostMapping("")
-    public Mono<RegisterUserResponse> registerUser(@RequestParam(name = "queue", defaultValue = "default") String queue, @RequestParam(name = "user_id") Long userId) {
+    public Mono<RegisterUserResponse> registerUser(
+            @RequestParam(name = "queue", defaultValue = "default") String queue,
+            @RequestParam(name = "user_id") Long userId)
+    {
         return userQueueService.registerWaitQueue(queue, userId)
                 .map(RegisterUserResponse::new);
     }
@@ -37,6 +41,15 @@ public class UserQueueController {
     ) {
         return userQueueService.isAllowed(queue, userId)
                 .map(AllowedUserResponse::new);
+    }
+
+    @GetMapping("/rank")
+    public Mono<?> getUserRank(
+            @RequestParam(name = "queue", defaultValue = "default") String queue,
+            @RequestParam(name = "user_id") Long userId
+    ) {
+        return userQueueService.getRank(queue, userId)
+                .map(RankNumberResponse::new);
     }
 
 }
